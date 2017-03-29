@@ -12,6 +12,15 @@
 
     console.log("board");
 
+    $scope.user = $localstorage.getObject('dados.user')
+    if($scope.user == false){
+      $state.transitionTo('home');
+    }
+
+    //Conectar ó MQTT e esperar eventos do formulario e as resposta do broker
+
+
+
   }
 
 })();
