@@ -4,3 +4,5 @@ npm-debug.log
 bower_components
 build
 .sass-cache
+mqtt-broker/node_modules
+mqtt-broker/bower_components

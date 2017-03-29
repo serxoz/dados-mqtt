@@ -1,0 +1,14 @@
+{
+  "name": "mqtt-broker",
+  "version": "1.0.0",
+  "description": "MQTT Broker por Dadiños webapp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@serxoz",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+      "mosca": "^2.2.0"
+  }	
+}

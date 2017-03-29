@@ -4,6 +4,7 @@
   angular.module('application', [
     'ui.router',
     'ngAnimate',
+    'angularPaho',
 
     //foundation
     'foundation',
