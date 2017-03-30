@@ -16,6 +16,7 @@ controller: BoardController
           </div>
           <div class="grid-content">
             Resultado tirada.
+            {{person.resultado_tirada}}
           </div>
         </div>
         <hr>
@@ -31,7 +32,7 @@ controller: BoardController
         <div class="grid-content medium-5">
           <div class="grid-block" style="margin-top:5px;">
             <button style="width:22px;" ng-click="restardado(x)">-</button>
-            <button style="width:22px; margin-left: 6px;" ng-click="sumardado(x)">+</button>            
+            <button style="width:22px; margin-left: 6px;" ng-click="sumardado(x)">+</button>
           </div>
           <div class="grid-block" style="margin-top:5px;">
             <input type="text" name="d4" style="width:50px; height:30px; text-align:center;" ng-model="input[x]"></input>

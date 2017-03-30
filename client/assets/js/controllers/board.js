@@ -98,7 +98,7 @@
 
       //Resultado de tirada
       if(json.action == "RESULT"){
-
+        console.log(JSON.stringify(json));
       }
 
     }
