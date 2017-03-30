@@ -38,8 +38,15 @@
       MqttClient.subscribe(topic_resultados);
 
       //hello
+      //saludamos en resultados, xa que sirve para mostrar o xogador.
       var message = new Paho.MQTT.Message(JSON.stringify({"action":"HELLO","user":$scope.user}));
-      message.destinationName = topic_resultados; //saludamos en resultados, xa que sirve para mostrar o xogador.
+      message.destinationName = topic_resultados;
+      MqttClient.send(message);
+
+      //WHO
+      //preguntamos quen hai, para dibuxalos
+      var message = new Paho.MQTT.Message(JSON.stringify({"action":"WHO"}));
+      message.destinationName = topic_resultados;
       MqttClient.send(message);
     }
 
@@ -58,18 +65,36 @@
     MqttClient._client.onMessageArrived = onMessageArrived;
     function onMessageArrived(message) {
       var json = JSON.parse(message.payloadString);
-      console.log("onMessage:"+json.user.nick);
+      // console.log("onMessage:"+json.user.nick);
 
-      //Unha persoa nova, debuxala
+      //Unha persoa nova, debuxala si non existe xa
       if(json.action == "HELLO"){
         console.log("HELLO message arrived!");
-        $scope.people.push(json.user);
 
-        $scope.$apply(); //actualización do DOM
+        var existe = false;
+        for(var i=0; i<$scope.people.length; i++){
+          if($scope.people[i].nick == json.user.nick){
+            console.log("existe");
+            existe = true;
+            break;
+          }
+        }
+
+        if(existe == false){
+          $scope.people.push(json.user);
+          $scope.$apply(); //actualización do DOM
+        }
       }
 
       //Resultado de WHO, debuxar a todos
-
+      if(json.action == "WHO"){
+        console.log("WHO message arrived!");
+        //Si recibimos un WHO enviamos un HELLO
+        var topic_resultados = "dados/"+$scope.user.room+"/resultados";
+        var message = new Paho.MQTT.Message(JSON.stringify({"action":"HELLO","user":$scope.user}));
+        message.destinationName = topic_resultados; //saludamos en resultados, xa que sirve para mostrar o xogador.
+        MqttClient.send(message);
+      }
 
     }
 
