@@ -96,6 +96,11 @@
         MqttClient.send(message);
       }
 
+      //Resultado de tirada
+      if(json.action == "RESULT"){
+        
+      }
+
     }
 
     // Controles frontend
