@@ -84,8 +84,6 @@ client.on('message', function (topic, message) {
       console.log(topic);
     }
 
-
-
   }
 
 })
