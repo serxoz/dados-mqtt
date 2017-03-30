@@ -5,19 +5,30 @@ controller: BoardController
 ---
 
 <div class="grid-container">
-  <h1>BOARD!</h1>
-  <div ng-repeat="person in people">
-    {{person.nick}}
-  </div>
-
-  <div class="grid-block">
+  <div class="grid-block" style="margin-top:50px;">
     <div class="grid-content">
 
-      <div class="grid-block medium-5" ng-repeat="x in ['d4', 'd6', 'd8', 'd10', 'd12', 'd20']">
-        <div class="grid-content medium-2" style="padding:0; margin:0;">
+      <div ng-repeat="person in people">
+        <div class="grid-block">
+          <div class="grid-content shrink">
+            <img src="http://placekitten.com/g/400/200" style="width:100px; max-height: 100px;">
+            <h4>{{person.nick}}</h4>
+          </div>
+          <div class="grid-content">
+            Resultado tirada.
+          </div>
+        </div>
+      </div>
+      <hr>
+
+    </div>
+
+    <div class="grid-content shrink" style="border: 1px solid grey; box-shadow: 2px 2px 5px #999;">
+      <div class="grid-block" ng-repeat="x in ['d4', 'd6', 'd8', 'd10', 'd12', 'd20', 'fudge']" style="margin-left:20px;">
+        <div class="grid-content medium-5" style="padding:0; margin:0;">
           <img src="assets/img/{{x}}.png">
         </div>
-        <div class="grid-content medium-2">
+        <div class="grid-content medium-5">
           <div class="grid-block" style="margin-top:5px;">
             <button style="width:22px;" ng-click="sumardado(x)">+</button>
             <button style="width:22px; margin-left: 6px;" ng-click="restardado(x)">-</button>
@@ -28,10 +39,9 @@ controller: BoardController
         </div>
       </div>
 
-      <a class="button" ng-click="reset()">Reset</a>
-      <a class="button" ng-click="roll()">Lanzar!</a>
-
+      <div style="margin-top:20px;">
+        <a class="button" ng-click="reset()">Reset</a>
+        <a class="button" ng-click="roll()">Lanzar!</a>
+      </div>
     </div>
-  </div>
-
 </div>
