@@ -10,4 +10,28 @@ controller: BoardController
     {{person.nick}}
   </div>
 
+  <div class="grid-block">
+    <div class="grid-content">
+
+      <div class="grid-block medium-5" ng-repeat="x in ['d4', 'd6', 'd8', 'd10', 'd12', 'd20']">
+        <div class="grid-content medium-2" style="padding:0; margin:0;">
+          <img src="assets/img/{{x}}.png">
+        </div>
+        <div class="grid-content medium-2">
+          <div class="grid-block" style="margin-top:5px;">
+            <button style="width:22px;" ng-click="sumardado(x)">+</button>
+            <button style="width:22px; margin-left: 6px;" ng-click="restardado(x)">-</button>
+          </div>
+          <div class="grid-block" style="margin-top:5px;">
+            <input type="text" name="d4" style="width:50px; height:30px; text-align:center;" ng-model="input[x]"></input>
+          </div>
+        </div>
+      </div>
+
+      <a class="button" ng-click="reset()">Reset</a>
+      <a class="button" ng-click="roll()">Lanzar!</a>
+
+    </div>
+  </div>
+
 </div>

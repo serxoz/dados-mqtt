@@ -73,9 +73,35 @@
 
     }
 
+    // Controles frontend
 
+    $scope.input = [];
+    var dados = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
+    for (var i = 0; i < dados.length; i++) {
+      $scope.input[dados[i]] = 0; //todos los input a 0
+    }
 
+    $scope.sumardado = function(dado){
+      // console.log("sumar"+dado);
+      $scope.input[dado] = $scope.input[dado]+1;
+    }
 
+    $scope.restardado = function(dado){
+      // console.log("restar"+dado);
+      if($scope.input[dado]>0){
+        $scope.input[dado] = $scope.input[dado]-1;
+      }
+    }
+
+    $scope.reset = function(){
+      for (var i = 0; i < dados.length; i++) {
+        $scope.input[dados[i]] = 0; //todos los input a 0
+      }
+    }
+
+    $scope.roll = function(){
+      console.log($scope.input);
+    }
 
 
 
