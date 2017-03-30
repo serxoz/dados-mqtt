@@ -78,9 +78,10 @@ client.on('message', function (topic, message) {
         }
       }
 
+      var topic = "dados/"+resposta.room+"/resultados";
+      client.publish(topic, JSON.stringify(resposta));
       console.log(JSON.stringify(resposta));
-
-
+      console.log(topic);
     }
 
 
