@@ -40,14 +40,14 @@ client.on('connect', function () {
 })
 
 client.on('message', function (topic, message) {
-  console.log(message);
+  // console.log(message);
 
   var json;
 
   try {
     // message is Buffer
     json = JSON.parse(message.toString());
-    console.log(json);
+    // console.log(json);
   }
   catch(err) {
     // console.log(err)
@@ -55,9 +55,33 @@ client.on('message', function (topic, message) {
   }
 
   if (typeof json !== 'undefined') {
-    // Implementar acción WHO
-    // así cando entre un novo, despois do HELLO mande un WHO
-    // e o broker lle devolva a xente que está en ese canal
+    //tiradas
+    if(json["action"] == "ROLL" && Object.keys(json).length > 1){
+      var resposta = {};
+      resposta.action = "RESULT";
+      resposta.user = json.user;
+      resposta.room = json.room;
+      resposta.result = {};
+
+      for (dice in json.dice){
+        if(dice=="fudge"){
+          resposta.result["fudge"]=[];
+          for(var i = 0; i<json.dice.fudge;i++){
+            resposta.result["fudge"].push(Math.floor(Math.random() * 3) + 1);
+          }
+        } else {
+          resposta.result[dice]=[];
+          for(var i = 0; i<json.dice[dice]; i++){
+            var max = dice.split("d")[1];
+            resposta.result[dice].push(Math.floor(Math.random() * 3) + 1);
+          }
+        }
+      }
+
+      console.log(JSON.stringify(resposta));
+
+
+    }
 
 
 

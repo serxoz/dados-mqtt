@@ -74,7 +74,7 @@
         var existe = false;
         for(var i=0; i<$scope.people.length; i++){
           if($scope.people[i].nick == json.user.nick){
-            console.log("existe");
+            // console.log("existe");
             existe = true;
             break;
           }
@@ -98,14 +98,14 @@
 
       //Resultado de tirada
       if(json.action == "RESULT"){
-        
+
       }
 
     }
 
     // Controles frontend
 
-    $scope.input = [];
+    $scope.input = {};
     var dados = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20', 'fudge'];
     for (var i = 0; i < dados.length; i++) {
       $scope.input[dados[i]] = 0; //todos los input a 0
@@ -130,7 +130,11 @@
     }
 
     $scope.roll = function(){
-      console.log($scope.input);
+      //Debería mandar o array coas tiradas e o nick, para dibuxalo no seu espacio
+      var tirada = JSON.stringify({"action":"ROLL","user":$scope.user.nick, "room":$scope.user.room, "dice": $scope.input})
+      console.log(tirada);
+
+      MqttSend(tirada);
     }
 
 
