@@ -109,6 +109,18 @@
             for (var tirada in tiradas){
               // console.log(typeof(tiradas[tirada]));
               var num = tiradas[tirada].toString();
+
+              //for fudge dices
+              if(num == "1"){
+                num = "+"
+              }
+              if(num == "2"){
+                num = ""
+              }
+              if(num == "3"){
+                num = "-"
+              }
+
               var html = '<div class="grid-content text-center" style="float: left;"><img src="assets/img/'+dado+'-resultado.png" style="width:40px;"><label style="font-size:2em;">'+num+'</label></div>';
               // div_result.append(dado+":"+tiradas[tirada].toString()+"&nbsp;");
               div_result.append(html);
@@ -142,6 +154,9 @@
     }
 
     $scope.reset = function(){
+      var div_result = angular.element( document.querySelector("#"+$scope.user.nick) );
+      div_result.html(''); //clean div
+
       for (var i = 0; i < dados.length; i++) {
         $scope.input[dados[i]] = 0; //todos los input a 0
       }
