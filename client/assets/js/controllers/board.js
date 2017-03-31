@@ -99,6 +99,20 @@
       //Resultado de tirada
       if(json.action == "RESULT"){
         console.log(JSON.stringify(json));
+        var div_result = angular.element( document.querySelector("#"+json.user) );
+        div_result.html(''); //clean div
+
+        for (var dado in json.result){
+          var tiradas = json.result[dado];
+          if(tiradas.length>0){
+            // console.log(tiradas);
+            for (var tirada in tiradas){
+              // console.log(typeof(tiradas[tirada]));
+              div_result.append(dado+":"+tiradas[tirada].toString()+"&nbsp;");
+            }
+          }
+        }
+
       }
 
     }
