@@ -108,7 +108,11 @@
             // console.log(tiradas);
             for (var tirada in tiradas){
               // console.log(typeof(tiradas[tirada]));
-              div_result.append(dado+":"+tiradas[tirada].toString()+"&nbsp;");
+              var num = tiradas[tirada].toString();
+              var html = '<div class="grid-content text-center" style="float: left;"><img src="assets/img/'+dado+'-resultado.png" style="width:40px;"><label style="font-size:2em;">'+num+'</label></div>';
+              // div_result.append(dado+":"+tiradas[tirada].toString()+"&nbsp;");
+              div_result.append(html);
+              $scope.$apply();
             }
           }
         }
