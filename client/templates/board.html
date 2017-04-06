@@ -14,7 +14,7 @@ controller: BoardController
         <div class="grid-block" style="border-bottom: 1px solid #eaeaea;">
           <div class="grid-content shrink">
             <img ng-if="person.avatar" src="{{person.avatar}}" class="avatar">
-            <img ng-if="!person.avatar" src="http://placekitten.com/g/400/200" class="avatar">
+            <img ng-if="!person.avatar" src="assets/img/gatito.jpg" class="avatar">
             <h4 ng-show="person.nick.length<=8">{{person.nick}}</h4>
             <h4 ng-show="person.nick.length>8">{{person.nick | limitTo : 6}}...</h4>
           </div>
