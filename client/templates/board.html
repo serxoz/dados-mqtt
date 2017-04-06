@@ -10,7 +10,7 @@ controller: BoardController
   </div>
   <div class="grid-block" style="margin-top:30px;">
     <div class="grid-content medium-9">
-      <div ng-repeat="person in people">
+      <div ng-repeat="person in people" style="margin-top: 7px;">
         <div class="grid-block" style="border-bottom: 1px solid #eaeaea;">
           <div class="grid-content shrink">
             <img ng-if="person.avatar" src="{{person.avatar}}" class="avatar">
@@ -21,6 +21,13 @@ controller: BoardController
           <div class="grid-content" style="max-width:560px;">
             <div class="block" id="{{person.nick}}">
               Resultado tirada.
+              <!-- <br>
+
+              <div class="text-center" style="width:2em; float: left; text-align:center;">
+                <i class="icon-dice-d20" style="position:absolute; font-size: 2.2em; color: grey;"></i>
+                <span style="top: 15px; font-size: 1.5em;">6</span>
+              </div> -->
+
             </div>
           </div>
         </div>

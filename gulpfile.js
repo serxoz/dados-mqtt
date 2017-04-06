@@ -22,7 +22,7 @@ var paths = {
   assets: [
     './client/**/*.*',
     '!./client/templates/**/*.*',
-    '!./client/assets/{scss,js}/**/*.*'
+    '!./client/assets/{scss,js,font}/**/*.*'
   ],
   // Sass will check these folders for files when you use @import.
   sass: [
@@ -98,6 +98,9 @@ gulp.task('copy:foundation', function(cb) {
   gulp.src('./bower_components/foundation-apps/iconic/**/*')
     .pipe(gulp.dest('./build/assets/img/iconic/'))
   ;
+
+  gulp.src('./client/assets/font/**.*')
+    .pipe(gulp.dest('./build/assets/font/'));
 
   cb();
 });
