@@ -18,7 +18,8 @@
     }
 
     //Conectar ó MQTT e esperar eventos do formulario e as resposta do broker
-    var ip = "127.0.0.1";
+    // var ip = "127.0.0.1";
+    var ip = "dados.tr4ck.net";
     var port = "4000"; //MQTT over WebSockets, unencrypted
     var id = $scope.user.nick;
     var mqttuser;
@@ -122,7 +123,7 @@
                   num = "-"
                 }
               }
-              
+
               var html = '<div class="grid-content text-center" style="float: left;"><img src="assets/img/'+dado+'-resultado.png" style="width:40px;"><label style="font-size:2em;">'+num+'</label></div>';
               // div_result.append(dado+":"+tiradas[tirada].toString()+"&nbsp;");
               div_result.append(html);

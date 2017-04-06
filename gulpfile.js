@@ -42,7 +42,8 @@ var paths = {
     'bower_components/foundation-apps/js/angular/**/*.js',
     '!bower_components/foundation-apps/js/angular/app.js',
     'bower_components/paho-mqtt-js/mqttws31.js',
-    'bower_components/angular-paho/dist/angular-paho.js'
+    'bower_components/angular-paho/dist/angular-paho.js',
+    'client/assets/js/modules/upload.js'
   ],
   // These files are for your app's JavaScript
   appJS: [

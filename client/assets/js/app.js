@@ -5,6 +5,7 @@
     'ui.router',
     'ngAnimate',
     'angularPaho',
+    'avatar',
 
     //foundation
     'foundation',
@@ -31,5 +32,24 @@
   function run() {
     FastClick.attach(document.body);
   }
+
+
+  angular
+    .module('application')
+    .directive("ngFileSelect",function(){
+      return {
+        link: function($scope,el){
+
+          el.bind("change", function(e){
+
+            $scope.file = (e.srcElement || e.target).files[0];
+            $scope.getFile();
+          })
+        }
+      }
+
+    })
+
+
 
 })();

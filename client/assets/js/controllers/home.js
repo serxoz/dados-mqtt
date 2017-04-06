@@ -6,8 +6,8 @@
     .controller('HomeController', HomeController);
 
 
-  HomeController.$inject = ['$scope', '$stateParams', '$state', '$controller', '$http', '$localstorage'];
-  function HomeController($scope, $stateParams, $state, $controller, $http, $localstorage) {
+  HomeController.$inject = ['$scope', '$stateParams', '$state', '$controller', '$http', '$localstorage', 'fileReader'];
+  function HomeController($scope, $stateParams, $state, $controller, $http, $localstorage, fileReader) {
     angular.extend(this, $controller('DefaultController', {$scope: $scope, $stateParams: $stateParams, $state: $state}));
 
     console.log("home");
@@ -30,6 +30,15 @@
       }
 
     }
+
+    $scope.getFile = function () {
+      $scope.progress = 0;
+      fileReader.readAsDataUrl($scope.file, $scope)
+                    .then(function(result) {
+                        $scope.user.avatar = result;
+                        // console.log($scope.user);
+                    });
+    };
 
   }
 
