@@ -12,6 +12,8 @@
 
     console.log("home");
 
+    $scope.user = {};
+
     $scope.login = function() {
       console.log("click");
       if ($scope.user){
