@@ -13,7 +13,8 @@ controller: BoardController
       <div ng-repeat="person in people">
         <div class="grid-block">
           <div class="grid-content shrink">
-            <img src="http://placekitten.com/g/400/200" style="width:100px; max-height: 100px;">
+            <img ng-if="person.avatar" src="{{person.avatar}}" style="width:100px; max-height: 100px;">
+            <img ng-if="!person.avatar" src="http://placekitten.com/g/400/200" style="width:100px; max-height: 100px;">
             <h4 ng-show="person.nick.length<=8">{{person.nick}}</h4>
             <h4 ng-show="person.nick.length>8">{{person.nick | limitTo : 6}}...</h4>
           </div>
