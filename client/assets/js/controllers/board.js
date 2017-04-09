@@ -209,12 +209,12 @@
       var message = new Paho.MQTT.Message(JSON.stringify({"action":"QUIT", "user":$scope.user.nick, "room":$scope.user.room}));
       message.destinationName = topic_resultados; //avisamos en resultados, xa que sirve para quitar o xogador.
       MqttClient.send(message);
-      $localstorage.remove('dados.user');
     };
 
     //click on quit button
     $scope.quit = function(){
       $scope.onExit();
+      $localstorage.remove('dados.user');
       $state.transitionTo('home');
       MqttClient.disconnect();
     }
