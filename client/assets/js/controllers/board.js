@@ -226,7 +226,7 @@
     });
 
     //closing window
-    // $window.onbeforeunload =  $scope.onExit;
+    $window.onbeforeunload =  $scope.onExit;
 
   }
 
