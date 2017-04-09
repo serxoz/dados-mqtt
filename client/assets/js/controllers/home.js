@@ -14,6 +14,11 @@
 
     $scope.user = {};
 
+    //If came from invite link
+    if($stateParams.room){
+      $scope.user.room = $stateParams.room;
+    }
+
     $scope.login = function() {
       console.log("click");
       if ($scope.user){

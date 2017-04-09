@@ -6,8 +6,8 @@
     .controller('BoardController', BoardController);
 
 
-  BoardController.$inject = ['$scope', '$stateParams', '$state', '$controller', '$http', '$localstorage', 'MqttClient'];
-  function BoardController($scope, $stateParams, $state, $controller, $http, $localstorage, MqttClient) {
+  BoardController.$inject = ['$scope', '$stateParams', '$state', '$controller', '$http', '$localstorage', 'MqttClient', '$window'];
+  function BoardController($scope, $stateParams, $state, $controller, $http, $localstorage, MqttClient, $window) {
     angular.extend(this, $controller('DefaultController', {$scope: $scope, $stateParams: $stateParams, $state: $state}));
 
     console.log("board");
@@ -97,6 +97,25 @@
         MqttClient.send(message);
       }
 
+      //Sale un xogador
+      if(json.action == "QUIT"){
+        console.log("QUIT message arrived!");
+        var indice;
+        for(var i=0; i<$scope.people.length; i++){
+          if($scope.people[i].nick == json.user){
+            // console.log("existe");
+            indice = i;
+            break;
+          }
+        }
+
+        if(indice > -1){
+          // console.log(indice);
+          $scope.people.splice(indice, 1);
+          $scope.$apply();
+        }
+      }
+
       //Resultado de tirada
       if(json.action == "RESULT"){
         console.log(JSON.stringify(json));
@@ -174,7 +193,30 @@
       MqttSend(tirada);
     }
 
+    $scope.onExit = function(){
+      console.log("Send QUIT");
+      var topic_resultados = "dados/"+$scope.user.room+"/resultados";
+      var message = new Paho.MQTT.Message(JSON.stringify({"action":"QUIT", "user":$scope.user.nick, "room":$scope.user.room}));
+      message.destinationName = topic_resultados; //avisamos en resultados, xa que sirve para quitar o xogador.
+      MqttClient.send(message);
+      $localstorage.remove('dados.user');
+    };
 
+    //click on quit button
+    $scope.quit = function(){
+      $scope.onExit();
+      $state.transitionTo('home');
+      MqttClient.disconnect();
+    }
+
+    //navigating out of board
+    $scope.$on("$destroy", function(){
+      console.log("Leaving!");
+      $scope.quit();
+    });
+
+    //closing window
+    $window.onbeforeunload =  $scope.onExit;
 
   }
 

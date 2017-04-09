@@ -7,8 +7,18 @@ controller: BoardController
 <div class="grid-container">
   <div class="grid-block">
     <div class="grid-content text-center"><h5>Sala {{user.room}}</h5></div>
+    <div class="grid-content shrink">
+      <a class="button float-right" ng-click="quit()">Salir</a>
+      <a zf-open="shareModal" class="button float-right">Invitar</a>
+      <div zf-modal="" id="shareModal">
+        <a zf-close="" class="close-button">×</a>
+        <h3>Invita gente a esta sala.</h3>
+        <p>Copia el siguiente enlace y compártelo:</p>
+        <p>http://dados.tr4ck.net/#!/{{user.room}}</p>
+      </div>
+    </div>
   </div>
-  <div class="grid-block" style="margin-top:30px;">
+  <div class="grid-block" style="margin-top:10px;">
     <div class="grid-content medium-9">
       <div ng-repeat="person in people" style="margin-top: 7px;">
         <div class="grid-block" style="border-bottom: 1px solid #eaeaea;">
