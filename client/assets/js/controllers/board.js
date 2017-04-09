@@ -140,7 +140,7 @@
     // Controles frontend
 
     $scope.input = {};
-    var dados = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20', 'fudge'];
+    var dados = ['d4', 'd6', 'd8', 'd10', 'd100', 'd12', 'd20', 'fudge'];
     for (var i = 0; i < dados.length; i++) {
       $scope.input[dados[i]] = 0; //todos los input a 0
     }
