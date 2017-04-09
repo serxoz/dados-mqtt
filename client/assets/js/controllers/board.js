@@ -193,6 +193,16 @@
       MqttSend(tirada);
     }
 
+    $scope.singleRoll = function(dice){
+      console.log(dice);
+      var dados = {"d4":0,"d6":0,"d8":0,"d10":0,"d100":0,"d12":0,"d20":0,"fudge":0};
+      dados[dice] = 1;
+      var tirada = JSON.stringify({"action":"ROLL","user":$scope.user.nick, "room":$scope.user.room, "dice": dados})
+      console.log(tirada);
+
+      MqttSend(tirada);
+    }
+
     $scope.onExit = function(){
       console.log("Send QUIT");
       var topic_resultados = "dados/"+$scope.user.room+"/resultados";
@@ -216,7 +226,7 @@
     });
 
     //closing window
-    $window.onbeforeunload =  $scope.onExit;
+    // $window.onbeforeunload =  $scope.onExit;
 
   }
 
