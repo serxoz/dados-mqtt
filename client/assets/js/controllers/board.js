@@ -11,6 +11,7 @@
     angular.extend(this, $controller('DefaultController', {$scope: $scope, $stateParams: $stateParams, $state: $state}));
 
     console.log("board");
+    $scope.autoreset=true; //Autolimpieza por defecto.
 
     $scope.user = $localstorage.getObject('dados.user')
     if($scope.user == false){
@@ -120,7 +121,10 @@
       if(json.action == "RESULT"){
         console.log(JSON.stringify(json));
         var div_result = angular.element( document.querySelector("#"+json.user) );
-        // div_result.html(''); //clean div
+
+        if($scope.autoreset){
+          div_result.html(''); //clean div
+        }
 
         for (var dado in json.result){
           var tiradas = json.result[dado];
