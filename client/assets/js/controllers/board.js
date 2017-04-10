@@ -120,7 +120,7 @@
       if(json.action == "RESULT"){
         console.log(JSON.stringify(json));
         var div_result = angular.element( document.querySelector("#"+json.user) );
-        div_result.html(''); //clean div
+        // div_result.html(''); //clean div
 
         for (var dado in json.result){
           var tiradas = json.result[dado];
