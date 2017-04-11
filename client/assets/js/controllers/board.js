@@ -158,6 +158,11 @@
 
       }
 
+      if(json.action == "CLEAN"){
+        var div_result = angular.element( document.querySelector("#"+json.user) );
+        div_result.html(''); //clean div
+      }
+
     }
 
     // Controles frontend
@@ -187,6 +192,12 @@
       for (var i = 0; i < dados.length; i++) {
         $scope.input[dados[i]] = 0; //todos los input a 0
       }
+
+      console.log("Send CLEAN");
+      var topic_resultados = "dados/"+$scope.user.room+"/resultados";
+      var message = new Paho.MQTT.Message(JSON.stringify({"action":"CLEAN", "user":$scope.user.nick, "room":$scope.user.room}));
+      message.destinationName = topic_resultados; //avisamos en resultados, xa que sirve para limpar os interfaces do resto de xogadores.
+      MqttClient.send(message);
     }
 
     $scope.roll = function(){
