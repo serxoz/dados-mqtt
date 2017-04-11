@@ -12,6 +12,11 @@
 
     console.log("board");
     $scope.autoreset=true; //Autolimpieza por defecto.
+    $scope.colorPickerOptions = {
+      format: 'hex',
+      swatchOnly: true,
+      pos: 'bottom right'
+    };
 
     $scope.user = $localstorage.getObject('dados.user')
     if($scope.user == false){
@@ -19,8 +24,8 @@
     }
 
     //Conectar ó MQTT e esperar eventos do formulario e as resposta do broker
-    // var ip = "127.0.0.1";
-    var ip = "dados.tr4ck.net";
+    var ip = "127.0.0.1";
+    // var ip = "dados.tr4ck.net";
     var port = "4000"; //MQTT over WebSockets, unencrypted
     var id = $scope.user.nick;
     var mqttuser;
@@ -148,7 +153,7 @@
               }
 
               // <i class="icon-dice-d8"></i>
-              var html = '<div class="grid-content text-center" style="float: left;"><img src="assets/img/'+dado+'-resultado.png" style="width:40px;"><label style="font-size:2em;">'+num+'</label></div>';
+              var html = '<div class="grid-content text-center" style="float: left;"><img src="assets/img/'+dado+'-resultado.png" style="width:40px;"><label style="font-size:2em; color:'+json.color+'">'+num+'</label></div>';
               // div_result.append(dado+":"+tiradas[tirada].toString()+"&nbsp;");
               div_result.append(html);
               $scope.$apply();
@@ -202,7 +207,7 @@
 
     $scope.roll = function(){
       //Debería mandar o array coas tiradas e o nick, para dibuxalo no seu espacio
-      var tirada = JSON.stringify({"action":"ROLL","user":$scope.user.nick, "room":$scope.user.room, "dice": $scope.input})
+      var tirada = JSON.stringify({"action":"ROLL","user":$scope.user.nick, "room":$scope.user.room, "dice": $scope.input, "color": $scope.dicecolor})
       console.log(tirada);
 
       MqttSend(tirada);
@@ -212,7 +217,7 @@
       console.log(dice);
       var dados = {"d4":0,"d6":0,"d8":0,"d10":0,"d100":0,"d12":0,"d20":0,"fudge":0};
       dados[dice] = 1;
-      var tirada = JSON.stringify({"action":"ROLL","user":$scope.user.nick, "room":$scope.user.room, "dice": dados})
+      var tirada = JSON.stringify({"action":"ROLL","user":$scope.user.nick, "room":$scope.user.room, "dice": dados, "color": $scope.dicecolor})
       console.log(tirada);
 
       MqttSend(tirada);

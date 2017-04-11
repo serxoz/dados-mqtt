@@ -6,6 +6,7 @@
     'ngAnimate',
     'angularPaho',
     'avatar',
+    'color.picker',
 
     //foundation
     'foundation',

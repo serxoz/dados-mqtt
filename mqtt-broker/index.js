@@ -61,6 +61,7 @@ client.on('message', function (topic, message) {
       resposta.action = "RESULT";
       resposta.user = json.user;
       resposta.room = json.room;
+      resposta.color = json.color;
       resposta.result = {};
 
       for (dice in json.dice){

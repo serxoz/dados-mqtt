@@ -27,7 +27,8 @@ var paths = {
   // Sass will check these folders for files when you use @import.
   sass: [
     'client/assets/scss',
-    'bower_components/foundation-apps/scss'
+    'bower_components/foundation-apps/scss',
+    'bower_components/angular-color-picker/dist/'
   ],
   // These files include Foundation for Apps and its dependencies
   foundationJS: [
@@ -43,6 +44,8 @@ var paths = {
     '!bower_components/foundation-apps/js/angular/app.js',
     'bower_components/paho-mqtt-js/mqttws31.js',
     'bower_components/angular-paho/dist/angular-paho.js',
+    'bower_components/tinycolor/dist/tinycolor-min.js',
+    'bower_components/angular-color-picker/dist/angularjs-color-picker.min.js',
     'client/assets/js/modules/upload.js'
   ],
   // These files are for your app's JavaScript

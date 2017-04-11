@@ -19,7 +19,7 @@ controller: BoardController
     </div>
   </div>
   <div class="grid-block" style="margin-top:10px;">
-    <div class="grid-content medium-9">
+    <div class="grid-content medium-8" style="margin-right: 20px;">
       <div ng-repeat="person in people" style="margin-top: 7px;">
         <div class="grid-block" style="border-bottom: 1px solid #eaeaea;">
           <div class="grid-content shrink">
@@ -28,7 +28,7 @@ controller: BoardController
             <h4 ng-show="person.nick.length<=8">{{person.nick}}</h4>
             <h4 ng-show="person.nick.length>8">{{person.nick | limitTo : 6}}...</h4>
           </div>
-          <div class="grid-content" style="max-width:560px;">
+          <div class="grid-content" style="max-width:500px;">
             <div class="block" id="{{person.nick}}">
               <!-- Resultado tirada. -->
               <!-- <br>
@@ -45,29 +45,36 @@ controller: BoardController
 
     </div>
 
-    <div class="grid-content shrink" style="border: 1px solid grey; box-shadow: 2px 2px 5px #999;">
+    <div class="grid-block medium-4" style="border: 1px solid grey; box-shadow: 2px 2px 5px #999; max-width:275px; height:340px;">
       <div class="grid-block" ng-repeat="x in ['d4', 'd6', 'd8', 'd10', 'd100', 'd12', 'd20', 'fudge']" style="margin-left:20px;">
         <div class="grid-content medium-5" style="padding:0; margin:0;">
-          <a ng-click="singleRoll(x)"><img src="assets/img/{{x}}.png"></a>
+          <a ng-click="singleRoll(x)"><img src="assets/img/{{x}}.png" style="width: 50px;"></a>
         </div>
         <div class="grid-content medium-5">
-          <div class="grid-block" style="margin-top:5px;">
+          <!-- <div class="grid-block" style="margin-top:5px;">
             <button style="width:22px;" ng-click="restardado(x)">-</button>
             <button style="width:22px; margin-left: 6px;" ng-click="sumardado(x)">+</button>
-          </div>
-          <div class="grid-block" style="margin-top:5px;">
-            <input type="text" name="d4" style="width:50px; height:30px; text-align:center;" ng-model="input[x]"></input>
+          </div> -->
+          <div class="grid-block" style="margin-top:10px;">
+            <input type="number" min="0" name="d4" style="width:50px; height:30px; text-align:center;" ng-model="input[x]"></input>
           </div>
         </div>
       </div>
 
-      <div class="text-center" style="margin-top:5px;">
-        <input id="checkbox_autoreset" type="checkbox" ng-model="autoreset"><label for="checkbox_autoreset">Autolimpiar</label>
+      <div class="grid-block text-center" style="margin-top:10px;">
+        <div class="grid-content">
+          <input id="checkbox_autoreset" type="checkbox" ng-model="autoreset" style="margin-top:10px;">
+          <label for="checkbox_autoreset">Autolimpiar</label>
+        </div>
+        <div class="grid-content">
+          <!-- <input placeholder="#aabbcc" size="7"> -->
+          <color-picker ng-model="dicecolor" options="colorPickerOptions"></color-picker>
+        </div>
       </div>
 
-      <div style="margin-top:20px;">
-        <a class="button" ng-click="reset()">Limpiar</a>
-        <a class="button" ng-click="roll()">Lanzar!</a>
+      <div class="grid-block" style="margin-top:20px;">
+        <div class="grid-content" style="margin-left:28px;"><a class="button" ng-click="reset()">Limpiar</a></div>
+        <div class="grid-content"><a class="button" ng-click="roll()">Lanzar!</a></div>
       </div>
     </div>
 </div>
