@@ -157,6 +157,12 @@
               // div_result.append(dado+":"+tiradas[tirada].toString()+"&nbsp;");
               div_result.append(html);
               $scope.$apply();
+
+              if(!$scope.mute){
+                var audio = new Audio('assets/audio/dado.mp3');
+                audio.play();
+              }
+              
             }
           }
         }

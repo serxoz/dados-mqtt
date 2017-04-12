@@ -22,7 +22,7 @@ var paths = {
   assets: [
     './client/**/*.*',
     '!./client/templates/**/*.*',
-    '!./client/assets/{scss,js,font}/**/*.*'
+    '!./client/assets/{scss,js,font,audio}/**/*.*'
   ],
   // Sass will check these folders for files when you use @import.
   sass: [
@@ -104,6 +104,9 @@ gulp.task('copy:foundation', function(cb) {
 
   gulp.src('./client/assets/font/**.*')
     .pipe(gulp.dest('./build/assets/font/'));
+
+  gulp.src('./client/assets/audio/**.*')
+    .pipe(gulp.dest('./build/assets/audio/'));
 
   cb();
 });
