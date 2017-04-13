@@ -24,8 +24,8 @@
     }
 
     //Conectar ó MQTT e esperar eventos do formulario e as resposta do broker
-    var ip = "127.0.0.1";
-    // var ip = "dados.tr4ck.net";
+    // var ip = "127.0.0.1";
+    var ip = "dados.tr4ck.net";
     var port = "4000"; //MQTT over WebSockets, unencrypted
     var id = $scope.user.nick;
     var mqttuser;
