@@ -26,7 +26,7 @@
           $scope.msg_error = "";
 
           //slugify nick to use as identifier
-          $scope.user.slug = getCleanedString($scope.user.nick);
+          $scope.user.slug = "nick-"+getCleanedString($scope.user.nick);
 
           $localstorage.setObject('dados.user', $scope.user);
 
