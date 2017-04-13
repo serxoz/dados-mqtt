@@ -60,6 +60,7 @@ client.on('message', function (topic, message) {
       var resposta = {};
       resposta.action = "RESULT";
       resposta.user = json.user;
+      resposta.slug = json.slug;
       resposta.room = json.room;
       resposta.color = json.color;
       resposta.result = {};

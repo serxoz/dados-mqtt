@@ -24,8 +24,8 @@
     }
 
     //Conectar ó MQTT e esperar eventos do formulario e as resposta do broker
-    // var ip = "127.0.0.1";
-    var ip = "dados.tr4ck.net";
+    var ip = "127.0.0.1";
+    // var ip = "dados.tr4ck.net";
     var port = "4000"; //MQTT over WebSockets, unencrypted
     var id = $scope.user.nick;
     var mqttuser;
@@ -125,7 +125,7 @@
       //Resultado de tirada
       if(json.action == "RESULT"){
         console.log(JSON.stringify(json));
-        var div_result = angular.element( document.querySelector("#"+json.user) );
+        var div_result = angular.element( document.querySelector("#"+json.slug) );
 
         if($scope.autoreset){
           div_result.html(''); //clean div
@@ -162,7 +162,7 @@
                 var audio = new Audio('assets/audio/dado.mp3');
                 audio.play();
               }
-              
+
             }
           }
         }
@@ -170,7 +170,7 @@
       }
 
       if(json.action == "CLEAN"){
-        var div_result = angular.element( document.querySelector("#"+json.user) );
+        var div_result = angular.element( document.querySelector("#"+json.slug) );
         div_result.html(''); //clean div
       }
 
@@ -197,7 +197,7 @@
     }
 
     $scope.reset = function(){
-      var div_result = angular.element( document.querySelector("#"+$scope.user.nick) );
+      var div_result = angular.element( document.querySelector("#"+$scope.user.slug) );
       div_result.html(''); //clean div
 
       for (var i = 0; i < dados.length; i++) {
@@ -206,14 +206,22 @@
 
       console.log("Send CLEAN");
       var topic_resultados = "dados/"+$scope.user.room+"/resultados";
-      var message = new Paho.MQTT.Message(JSON.stringify({"action":"CLEAN", "user":$scope.user.nick, "room":$scope.user.room}));
+      var message = new Paho.MQTT.Message(JSON.stringify({"action":"CLEAN",
+                                                          "user":$scope.user.nick,
+                                                          "slug":$scope.user.slug,
+                                                          "room":$scope.user.room}));
       message.destinationName = topic_resultados; //avisamos en resultados, xa que sirve para limpar os interfaces do resto de xogadores.
       MqttClient.send(message);
     }
 
     $scope.roll = function(){
       //Debería mandar o array coas tiradas e o nick, para dibuxalo no seu espacio
-      var tirada = JSON.stringify({"action":"ROLL","user":$scope.user.nick, "room":$scope.user.room, "dice": $scope.input, "color": $scope.dicecolor})
+      var tirada = JSON.stringify({"action":"ROLL",
+                                   "user":$scope.user.nick,
+                                   "slug":$scope.user.slug,
+                                   "room":$scope.user.room,
+                                   "dice": $scope.input,
+                                   "color": $scope.dicecolor})
       console.log(tirada);
 
       MqttSend(tirada);
@@ -223,7 +231,12 @@
       console.log(dice);
       var dados = {"d4":0,"d6":0,"d8":0,"d10":0,"d100":0,"d12":0,"d20":0,"fudge":0};
       dados[dice] = 1;
-      var tirada = JSON.stringify({"action":"ROLL","user":$scope.user.nick, "room":$scope.user.room, "dice": dados, "color": $scope.dicecolor})
+      var tirada = JSON.stringify({"action":"ROLL",
+                                   "user":$scope.user.nick,
+                                   "slug":$scope.user.slug,
+                                   "room":$scope.user.room,
+                                   "dice": dados,
+                                   "color": $scope.dicecolor})
       console.log(tirada);
 
       MqttSend(tirada);
@@ -232,7 +245,10 @@
     $scope.onExit = function(){
       console.log("Send QUIT");
       var topic_resultados = "dados/"+$scope.user.room+"/resultados";
-      var message = new Paho.MQTT.Message(JSON.stringify({"action":"QUIT", "user":$scope.user.nick, "room":$scope.user.room}));
+      var message = new Paho.MQTT.Message(JSON.stringify({"action":"QUIT",
+                                                          "user":$scope.user.nick,
+                                                          "slug":$scope.user.slug,
+                                                          "room":$scope.user.room}));
       message.destinationName = topic_resultados; //avisamos en resultados, xa que sirve para quitar o xogador.
       MqttClient.send(message);
     };

@@ -26,10 +26,10 @@ controller: BoardController
             <img ng-if="person.avatar" src="{{person.avatar}}" class="avatar">
             <img ng-if="!person.avatar" src="assets/img/gatito.jpg" class="avatar">
             <h4 ng-show="person.nick.length<=8">{{person.nick}}</h4>
-            <h4 ng-show="person.nick.length>8">{{person.nick | limitTo : 6}}...</h4>
+            <h4 ng-show="person.nick.length>8">{{person.nick | limitTo : 5}}...</h4>
           </div>
           <div class="grid-content" style="max-width:500px;">
-            <div class="block" id="{{person.nick}}">
+            <div class="block" id="{{person.slug}}">
               <!-- Resultado tirada. -->
               <!-- <br>
 
