@@ -1,4 +1,7 @@
 // Server
+// start it with: forever start -ao log/out.log index.js
+
+var util = require('util');
 var mosca = require('mosca');
 var http = require('http');
 
@@ -82,8 +85,7 @@ client.on('message', function (topic, message) {
 
       var topic = "dados/"+resposta.room+"/resultados";
       client.publish(topic, JSON.stringify(resposta));
-      console.log(JSON.stringify(resposta));
-      console.log(topic);
+      util.log("ON "+topic+" MSG:"+JSON.stringify(resposta));
     }
 
   }
