@@ -22,7 +22,8 @@
     if($scope.user == false){
       $state.transitionTo('home');
     }
-
+    $scope.nombre_sala = decodeURI($scope.user.room);
+    
     //Conectar ó MQTT e esperar eventos do formulario e as resposta do broker
     // var ip = "127.0.0.1";
     var ip = "dados.tr4ck.net";

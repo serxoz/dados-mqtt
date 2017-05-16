@@ -28,6 +28,9 @@
           //slugify nick to use as identifier
           $scope.user.slug = "nick-"+getCleanedString($scope.user.nick);
 
+          //encoding room name
+          $scope.user.room = encodeURI($scope.user.room);
+
           $localstorage.setObject('dados.user', $scope.user);
 
           $state.transitionTo('board');
