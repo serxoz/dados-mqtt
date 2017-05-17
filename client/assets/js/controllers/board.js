@@ -6,8 +6,8 @@
     .controller('BoardController', BoardController);
 
 
-  BoardController.$inject = ['$scope', '$stateParams', '$state', '$controller', '$http', '$localstorage', 'MqttClient', '$window'];
-  function BoardController($scope, $stateParams, $state, $controller, $http, $localstorage, MqttClient, $window) {
+  BoardController.$inject = ['$scope', '$stateParams', '$state', '$controller', '$http', '$localstorage', 'MqttClient', '$window', 'ModalFactory'];
+  function BoardController($scope, $stateParams, $state, $controller, $http, $localstorage, MqttClient, $window, ModalFactory) {
     angular.extend(this, $controller('DefaultController', {$scope: $scope, $stateParams: $stateParams, $state: $state}));
 
     console.log("board");
@@ -23,7 +23,7 @@
       $state.transitionTo('home');
     }
     $scope.nombre_sala = decodeURI($scope.user.room);
-    
+
     //Conectar ó MQTT e esperar eventos do formulario e as resposta do broker
     // var ip = "127.0.0.1";
     var ip = "dados.tr4ck.net";
@@ -217,6 +217,23 @@
 
     $scope.roll = function(){
       //Debería mandar o array coas tiradas e o nick, para dibuxalo no seu espacio
+
+      var dados = ['d4', 'd6', 'd8', 'd10', 'd100', 'd12', 'd20', 'fudge'];
+      for (var i = 0; i < dados.length; i++) {
+        //Cando o campo input tipo number ten un max e se supera estableceo como undefined.
+        if( $scope.input[dados[i]] == undefined ){
+          var config = {
+            id: 'alert_too_much_dices',
+            template: '<br><span class="alert label" style="font-size:1.3rem;">¡Está intentando lanzar demasiados dados!</span><br><br>Inténtelo de nuevo con una cantidad menor.<br>',
+            animationIn: 'slideInFromTop'
+          }
+          $scope.modal = new ModalFactory(config);
+          $scope.modal.activate();
+
+          break;
+        }
+      }
+
       var tirada = JSON.stringify({"action":"ROLL",
                                    "user":$scope.user.nick,
                                    "slug":$scope.user.slug,
