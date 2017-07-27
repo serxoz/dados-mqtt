@@ -23,8 +23,11 @@ controller: BoardController
       <div ng-repeat="person in people" style="margin-top: 7px;">
         <div class="grid-block" style="border-bottom: 1px solid #eaeaea;">
           <div class="grid-content medium-3">
-            <img ng-if="person.avatar" src="{{person.avatar}}" class="avatar">
-            <img ng-if="!person.avatar" src="assets/img/gatito.jpg" class="avatar">
+            <div class="counter">0</div>
+            <div class="avatar">
+              <img ng-if="person.avatar" src="{{person.avatar}}">
+              <img ng-if="!person.avatar" src="assets/img/gatito.jpg">
+            </div>
             <h4 ng-show="person.nick.length<=8">{{person.nick}}</h4>
             <h4 ng-show="person.nick.length>8">{{person.nick | limitTo : 9}}...</h4>
           </div>
