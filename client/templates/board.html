@@ -78,10 +78,14 @@ controller: BoardController
         </div>
       </div>
 
-      <div class="grid-block">
+      <div class="grid-block" style="margin-top: 10px">
         <div class="grid-content">
           <input id="checkbox_counterActive" type="checkbox" ng-model="counterActive" ng-change="counterActive_toggle()" style="margin-left:20px;">
-          <label for="checkbox_counterACtive">Contador</label>
+          <label for="checkbox_counterACtive">Contador({{counter}})</label>
+        </div>
+        <div class="grid-content">
+          <a class="counter-action" ng-click="counter_remove()">-</a>
+          <a class="counter-action" ng-click="counter_add()">+</a>
         </div>
       </div>
 

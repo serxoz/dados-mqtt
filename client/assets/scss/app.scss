@@ -23,6 +23,19 @@
   font-size: 1.5em;
   display: none;
 }
+.counter-action {
+  color: #333;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  &:hover {
+    color: #000;
+  }
+  font-size: 1.2em;
+  padding: 0 10px;
+}
 /*
     DICE FONT
     http://fontello.com/

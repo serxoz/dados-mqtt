@@ -303,8 +303,7 @@
 
     $scope.counter = 0;
     $scope.counterActive = false;
-    $scope.counterActive_toggle = function () {
-
+    function MqttCounterQuery() {
       var counterQuery = new Paho.MQTT.Message(JSON.stringify({"action":"COUNTER",
         "user":$scope.user.nick,
         "slug":$scope.user.slug,
@@ -315,6 +314,19 @@
 
       counterQuery.destinationName = "dados/"+$scope.user.room+"/resultados";
       MqttClient.send(counterQuery);
+    }
+    $scope.counterActive_toggle = function () {
+      MqttCounterQuery();
+    }
+    $scope.counter_add = function() {
+      $scope.counter++;
+      if ($scope.counter > 99) $scope.counter = 99;
+      MqttCounterQuery();
+    }
+    $scope.counter_remove = function() {
+      $scope.counter--;
+      if ($scope.counter < 0) $scope.counter = 0;
+      MqttCounterQuery();
     }
 
   }
