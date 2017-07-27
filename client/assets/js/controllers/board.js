@@ -311,7 +311,7 @@
         "value": $scope.counter
       }));
 
-      counterQuery.destinationName = "dados/"+$scope.user.room+"/counter";
+      counterQuery.destinationName = "dados/"+$scope.user.room+"/resultados";
       MqttClient.send(counterQuery);
     }
 
