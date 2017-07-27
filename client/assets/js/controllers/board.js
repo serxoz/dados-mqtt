@@ -170,6 +170,15 @@
 
       }
 
+      //Cambio en el contador
+      if(json.action == "COUNTER") {
+        var div_result = angular.element( document.querySelector("#counter_"+json.slug) );
+        if (json.active) {
+          div_result.css("display", "block");
+        }
+        div_result.text(json.value);
+      }
+
       if(json.action == "CLEAN"){
         var div_result = angular.element( document.querySelector("#"+json.slug) );
         div_result.html(''); //clean div
@@ -287,6 +296,24 @@
 
     //closing window
     $window.onbeforeunload =  $scope.onExit;
+
+    // Implement counter
+
+    $scope.counter = 0;
+    $scope.counterActive = false;
+    $scope.counterActive_toggle = function () {
+
+      var counterQuery = new Paho.MQTT.Message(JSON.stringify({"action":"COUNTER",
+        "user":$scope.user.nick,
+        "slug":$scope.user.slug,
+        "room":$scope.user.room,
+        "active": $scope.counterActive,
+        "value": $scope.counter
+      }));
+
+      counterQuery.destinationName = "dados/"+$scope.user.room+"/counter";
+      MqttClient.send(counterQuery);
+    }
 
   }
 

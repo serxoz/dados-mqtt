@@ -23,7 +23,7 @@ controller: BoardController
       <div ng-repeat="person in people" style="margin-top: 7px;">
         <div class="grid-block" style="border-bottom: 1px solid #eaeaea;">
           <div class="grid-content medium-3">
-            <div class="counter">0</div>
+            <div class="counter" id="counter_{{person.slug}}">0</div>
             <div class="avatar">
               <img ng-if="person.avatar" src="{{person.avatar}}">
               <img ng-if="!person.avatar" src="assets/img/gatito.jpg">
@@ -75,6 +75,13 @@ controller: BoardController
         <div class="grid-content">
           <!-- <input placeholder="#aabbcc" size="7"> -->
           <color-picker ng-model="dicecolor" options="colorPickerOptions"></color-picker>
+        </div>
+      </div>
+
+      <div class="grid-block">
+        <div class="grid-content">
+          <input id="checkbox_counterActive" type="checkbox" ng-model="counterActive" ng-change="counterActive_toggle()" style="margin-left:20px;">
+          <label for="checkbox_counterACtive">Contador</label>
         </div>
       </div>
 
