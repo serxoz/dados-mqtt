@@ -175,6 +175,8 @@
         var div_result = angular.element( document.querySelector("#counter_"+json.slug) );
         if (json.active) {
           div_result.css("display", "block");
+        } else {
+          div_result.css("display", "none");
         }
         div_result.text(json.value);
       }
