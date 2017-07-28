@@ -3,14 +3,42 @@
 @import "angularjs-color-picker";
 
 .avatar {
-  width:70px;
-  height: 70px;
-  border-radius: 35px;
-	-webkit-border-radius: 35px;
-	-moz-border-radius: 35px;
+  img {
+    width: 70px;
+    height: 70px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+  }
+
 }
-
-
+.counter {
+  position: absolute;
+  border-right: 1px solid #000000;
+  border-bottom-right-radius: 50%;
+  border-top-right-radius: 50%;
+  background-color: #FFF;
+  width: 40px;
+  text-align: center;
+  left: 0px;
+  top: 17px;
+  padding: 5px 0;
+  font-size: 1.5em;
+  display: none;
+}
+.counter-action {
+  color: #333;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  &:hover {
+    color: #000;
+  }
+  font-size: 1.2em;
+  padding: 0 10px;
+}
 /*
     DICE FONT
     http://fontello.com/
@@ -20,13 +48,14 @@
   font-family: 'rpg-dice';
   src: url('../font/rpg-dice.eot?87430056');
   src: url('../font/rpg-dice.eot?87430056#iefix') format('embedded-opentype'),
-       url('../font/rpg-dice.woff2?87430056') format('woff2'),
-       url('../font/rpg-dice.woff?87430056') format('woff'),
-       url('../font/rpg-dice.ttf?87430056') format('truetype'),
-       url('../font/rpg-dice.svg?87430056#rpg-dice') format('svg');
+  url('../font/rpg-dice.woff2?87430056') format('woff2'),
+  url('../font/rpg-dice.woff?87430056') format('woff'),
+  url('../font/rpg-dice.ttf?87430056') format('truetype'),
+  url('../font/rpg-dice.svg?87430056#rpg-dice') format('svg');
   font-weight: normal;
   font-style: normal;
 }
+
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
 /*
@@ -38,7 +67,7 @@
 }
 */
 
- [class^="icon-"]:before, [class*=" icon-"]:before {
+[class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "rpg-dice";
   font-style: normal;
   font-weight: normal;
@@ -73,10 +102,40 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.icon-dice-d4:before { content: '\e800'; } /* '' */
-.icon-dice-d6:before { content: '\e801'; } /* '' */
-.icon-dice-d8:before { content: '\e802'; } /* '' */
-.icon-dice-d10:before { content: '\e803'; } /* '' */
-.icon-dice-d100:before { content: '\e804'; } /* '' */
-.icon-dice-d12:before { content: '\e805'; } /* '' */
-.icon-dice-d20:before { content: '\e806'; } /* '' */
+.icon-dice-d4:before {
+  content: '\e800';
+}
+
+/* '' */
+.icon-dice-d6:before {
+  content: '\e801';
+}
+
+/* '' */
+.icon-dice-d8:before {
+  content: '\e802';
+}
+
+/* '' */
+.icon-dice-d10:before {
+  content: '\e803';
+}
+
+/* '' */
+.icon-dice-d100:before {
+  content: '\e804';
+}
+
+/* '' */
+.icon-dice-d12:before {
+  content: '\e805';
+}
+
+/* '' */
+.icon-dice-d20:before {
+  content: '\e806';
+}
+
+/* '' */
+
+
