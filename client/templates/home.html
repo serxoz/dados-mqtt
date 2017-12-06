@@ -9,21 +9,21 @@ controller: HomeController
     <div class="grid-content">
       <form ng-submit="login()" method=post>
         <label>
-          Nick:
+          {{ 'NOMBRE' | translate }}:
           <input type="text" placeholder="Manolo75" ng-model="user.nick">
         </label>
         <label>
-          Nombre de sala:
+          {{ 'NOMBRE_SALA' | translate }}:
           <input type="text" placeholder="LivingR00m" ng-model="user.room">
         </label>
         <label>
-          Selecciona una imagen para tu avatar:<br>
+          {{ 'IMAGEN' | translate }}:<br>
           <input type="file" ng-file-select="onFileSelect($files)" >
         </label>
 
-        <input type="submit" class="button expand" value="ENTRAR" style="margin-top:30px;"/>
+        <input type="submit" class="button expand" value="{{ 'ENTRAR' | translate }}" style="margin-top:30px;"/>
       </form>
-      <label ng-if="msg_error">{{msg_error}}</label>
+      <label ng-if="msg_error">{{ 'ERROR_LOGIN' | translate }}.</label>
     </div>
   </div>
 

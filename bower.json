@@ -25,6 +25,7 @@
   "dependencies": {
     "foundation-apps": "~1.2.0",
     "angular-paho": "^0.0.2",
-    "angular-color-picker": "angularjs-color-picker#^3.2.1"
+    "angular-color-picker": "angularjs-color-picker#^3.2.1",
+    "angular-translate": "^2.16.0"
   }
 }

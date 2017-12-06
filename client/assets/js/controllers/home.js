@@ -23,7 +23,7 @@
       console.log("click");
       if ($scope.user){
         if ($scope.user.nick && $scope.user.room){
-          $scope.msg_error = "";
+          $scope.msg_error = false;
 
           //slugify nick to use as identifier
           $scope.user.slug = "nick-"+getCleanedString($scope.user.nick);
@@ -36,10 +36,10 @@
           $state.transitionTo('board');
 
         } else {
-          $scope.msg_error = "Elija un nick y una sala.";
+          $scope.msg_error = true;
         }
       } else {
-        $scope.msg_error = "Elija un nick y una sala.";
+        $scope.msg_error = true;
       }
 
     }
