@@ -170,6 +170,17 @@
 
       }
 
+      //Cambio en el contador
+      if(json.action == "COUNTER") {
+        var div_result = angular.element( document.querySelector("#counter_"+json.slug) );
+        if (json.active) {
+          div_result.css("display", "block");
+        } else {
+          div_result.css("display", "none");
+        }
+        div_result.text(json.value);
+      }
+
       if(json.action == "CLEAN"){
         var div_result = angular.element( document.querySelector("#"+json.slug) );
         div_result.html(''); //clean div
@@ -287,6 +298,36 @@
 
     //closing window
     $window.onbeforeunload =  $scope.onExit;
+
+    // Implement counter
+
+    $scope.counter = 0;
+    $scope.counterActive = false;
+    function MqttCounterQuery() {
+      var counterQuery = new Paho.MQTT.Message(JSON.stringify({"action":"COUNTER",
+        "user":$scope.user.nick,
+        "slug":$scope.user.slug,
+        "room":$scope.user.room,
+        "active": $scope.counterActive,
+        "value": $scope.counter
+      }));
+
+      counterQuery.destinationName = "dados/"+$scope.user.room+"/resultados";
+      MqttClient.send(counterQuery);
+    }
+    $scope.counterActive_toggle = function () {
+      MqttCounterQuery();
+    }
+    $scope.counter_add = function() {
+      $scope.counter++;
+      if ($scope.counter > 99) $scope.counter = 99;
+      MqttCounterQuery();
+    }
+    $scope.counter_remove = function() {
+      $scope.counter--;
+      if ($scope.counter < 0) $scope.counter = 0;
+      MqttCounterQuery();
+    }
 
   }
 
