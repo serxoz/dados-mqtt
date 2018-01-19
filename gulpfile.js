@@ -47,6 +47,7 @@ var paths = {
     'bower_components/angular-paho/dist/angular-paho.js',
     'bower_components/tinycolor/dist/tinycolor-min.js',
     'bower_components/angular-color-picker/dist/angularjs-color-picker.min.js',
+    'bower_components/angular-translate/angular-translate.min.js',
     'client/assets/js/modules/upload.js'
   ],
   // These files are for your app's JavaScript

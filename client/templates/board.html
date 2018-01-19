@@ -6,14 +6,14 @@ controller: BoardController
 
 <div class="grid-container">
   <div class="grid-block">
-    <div class="grid-content text-center"><h5>Sala {{nombre_sala}}</h5></div>
+    <div class="grid-content text-center"><h5>{{ 'SALA' | translate }} {{nombre_sala}}</h5></div>
     <div class="grid-content shrink">
-      <a class="button float-right" ng-click="quit()">Salir</a>
-      <a zf-open="shareModal" class="button float-right">Invitar</a>
+      <a class="button float-right" ng-click="quit()">{{ 'SALIR' | translate }}</a>
+      <a zf-open="shareModal" class="button float-right">{{ 'INVITAR' | translate }}</a>
       <div zf-modal="" id="shareModal">
         <a zf-close="" class="close-button">×</a>
-        <h3>Invita gente a esta sala.</h3>
-        <p>Copia el siguiente enlace y compártelo:</p>
+        <h3>{{ 'INVITAR_TITULO' | translate }}.</h3>
+        <p>{{ 'INVITAR_TEXTO' | translate }}:</p>
         <p>http://dados.tr4ck.net/#!/{{user.room}}</p>
       </div>
     </div>
@@ -67,10 +67,10 @@ controller: BoardController
       <div class="grid-block" style="margin-top:10px;">
         <div class="grid-content">
           <input id="checkbox_autoreset" type="checkbox" ng-model="autoreset" style="margin-left:20px;">
-          <label for="checkbox_autoreset">Autolimpiar</label>
+          <label for="checkbox_autoreset">{{ 'AUTOLIMPIAR' | translate }}</label>
           <br>
           <input id="checkbox_mute" type="checkbox" ng-model="mute" style="margin-top:3px;margin-left:20px;">
-          <label for="checkbox_mute">Silencio</label>
+          <label for="checkbox_mute">{{ 'SILENCIO' | translate }}</label>
         </div>
         <div class="grid-content">
           <!-- <input placeholder="#aabbcc" size="7"> -->
@@ -81,7 +81,7 @@ controller: BoardController
       <div class="grid-block" style="margin-top: 10px">
         <div class="grid-content">
           <input id="checkbox_counterActive" type="checkbox" ng-model="counterActive" ng-change="counterActive_toggle()" style="margin-left:20px;">
-          <label for="checkbox_counterActive">Contador({{counter}})</label>
+          <label for="checkbox_counterActive">{{ 'CONTADOR' | translate }}({{counter}})</label>
         </div>
         <div class="grid-content">
           <a class="counter-action" ng-click="counter_remove()">-</a>
@@ -90,8 +90,8 @@ controller: BoardController
       </div>
 
       <div class="grid-block" style="margin-top:20px;">
-        <div class="grid-content" style="margin-left:28px;"><a class="button" ng-click="reset()">Limpiar</a></div>
-        <div class="grid-content"><a class="button" ng-click="roll()">Lanzar!</a></div>
+        <div class="grid-content" style="margin-left:28px;"><a class="button" ng-click="reset()">{{ 'LIMPIAR' | translate }}</a></div>
+        <div class="grid-content"><a class="button" ng-click="roll()">{{ 'LANZAR' | translate }}!</a></div>
       </div>
     </div>
 </div>
