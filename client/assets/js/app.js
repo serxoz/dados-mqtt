@@ -7,6 +7,7 @@
     'angularPaho',
     'avatar',
     'color.picker',
+    'ui.sortable',
 
     //foundation
     'foundation',
