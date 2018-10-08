@@ -4,6 +4,9 @@
 var util = require('util');
 var mosca = require('mosca');
 var http = require('http');
+var seedrandom = require('seedrandom');
+
+rng = seedrandom();  // Autoseeded ARC4-based PRNG.
 
 var moscaSettings = {
   port: 1883,
@@ -72,13 +75,13 @@ client.on('message', function (topic, message) {
         if(dice=="fudge"){
           resposta.result["fudge"]=[];
           for(var i = 0; i<json.dice.fudge;i++){
-            resposta.result["fudge"].push(Math.floor(Math.random() * 3) + 1);
+            resposta.result["fudge"].push(Math.floor(rng() * 3) + 1);
           }
         } else {
           resposta.result[dice]=[];
           for(var i = 0; i<json.dice[dice]; i++){
             var max = dice.split("d")[1];
-            resposta.result[dice].push(Math.floor(Math.random() * max) + 1);
+            resposta.result[dice].push(Math.floor(rng() * max) + 1);
           }
         }
       }

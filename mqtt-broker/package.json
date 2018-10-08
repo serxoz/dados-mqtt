@@ -9,6 +9,7 @@
   "author": "@serxoz",
   "license": "BSD-2-Clause",
   "dependencies": {
-      "mosca": "^2.2.0"
-  }	
+    "mosca": "^2.2.0",
+    "seedrandom": "^2.4.4"
+  }
 }
