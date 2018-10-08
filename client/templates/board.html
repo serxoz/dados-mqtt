@@ -48,7 +48,7 @@ controller: BoardController
 
     </div>
 
-    <div class="grid-block medium-4" style="border: 1px solid grey; box-shadow: 2px 2px 5px #999; max-width:275px; height:380px;">
+    <div class="grid-block medium-4" style="border: 1px solid grey; box-shadow: 2px 2px 5px #999; max-width:275px; height:400px;">
       <div class="grid-block" ng-repeat="x in ['d4', 'd6', 'd8', 'd10', 'd100', 'd12', 'd20', 'fudge']" style="margin-left:20px;">
         <div class="grid-content medium-5" style="padding:0; margin:0;">
           <a ng-click="singleRoll(x)"><img src="assets/img/{{x}}.png" style="width: 50px;"></a>
@@ -71,6 +71,9 @@ controller: BoardController
           <br>
           <input id="checkbox_mute" type="checkbox" ng-model="mute" style="margin-top:3px;margin-left:20px;">
           <label for="checkbox_mute">{{ 'SILENCIO' | translate }}</label>
+          <br>
+          <input id="checkbox_explosive" type="checkbox" ng-model="explosive" style="margin-top:3px;margin-left:20px;">
+          <label for="checkbox_explosive">{{ 'EXPLOSIVO' | translate }}</label>
         </div>
         <div class="grid-content">
           <!-- <input placeholder="#aabbcc" size="7"> -->

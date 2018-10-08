@@ -12,6 +12,7 @@
 
     console.log("board");
     $scope.autoreset=true; //Autolimpieza por defecto.
+    $scope.explosive=false;
     $scope.colorPickerOptions = {
       format: 'hex',
       swatchOnly: true,
@@ -250,7 +251,8 @@
                                    "slug":$scope.user.slug,
                                    "room":$scope.user.room,
                                    "dice": $scope.input,
-                                   "color": $scope.dicecolor})
+                                   "color": $scope.dicecolor,
+                                   "explosive": $scope.explosive})
       console.log(tirada);
 
       MqttSend(tirada);
@@ -265,7 +267,8 @@
                                    "slug":$scope.user.slug,
                                    "room":$scope.user.room,
                                    "dice": dados,
-                                   "color": $scope.dicecolor})
+                                   "color": $scope.dicecolor,
+                                   "explosive": $scope.explosive})
       console.log(tirada);
 
       MqttSend(tirada);

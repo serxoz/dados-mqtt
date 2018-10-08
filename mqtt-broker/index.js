@@ -81,7 +81,13 @@ client.on('message', function (topic, message) {
           resposta.result[dice]=[];
           for(var i = 0; i<json.dice[dice]; i++){
             var max = dice.split("d")[1];
-            resposta.result[dice].push(Math.floor(rng() * max) + 1);
+            var resultado = Math.floor(rng() * max) + 1;
+            resposta.result[dice].push(resultado);
+
+            while(json.explosive && resultado == max) {
+                resultado = Math.floor(rng() * max) + 1;
+                resposta.result[dice].push(resultado);
+            }
           }
         }
       }
